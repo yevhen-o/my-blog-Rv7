@@ -2,7 +2,7 @@ import { BackButtonHeading } from "@src/components/BackButtonHeading";
 import { UserInterface } from "@src/types/UserInterface";
 import { useLoaderData } from "react-router";
 
-export function UserPage() {
+export default function UserPage() {
   const user = useLoaderData<UserInterface>();
 
   return (

@@ -1,58 +1,68 @@
 import { RouteObject } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import NotFound from "./pages/NotFound";
-import { BlogList } from "./pages/Blog";
+import { lazy, Suspense } from "react";
+import { MainLayout } from "./features/layout/MainLayout";
 import {
   getBlogBySlug,
   getBlogPosts,
   getUserById,
   getUsers,
 } from "./services/httpClient";
-import { MainLayout } from "./features/layout/MainLayout";
-import { BlogPost } from "./pages/BlogPost";
-import { BlogAddNew } from "./pages/BlogAddNew";
 import { getReactRouterPath, IDENTIFIERS } from "./utils/urlHelper";
-import { UserList } from "./pages/UserList";
-import { AddUser } from "./pages/UserAddNew";
-import { UserPage } from "./pages/UserPage";
+
+// Lazy-loaded pages
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const BlogList = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const BlogAddNew = lazy(() => import("./pages/BlogAddNew"));
+const UserList = lazy(() => import("./pages/UserList"));
+const AddUser = lazy(() => import("./pages/UserAddNew"));
+const UserPage = lazy(() => import("./pages/UserPage"));
+
+// Loader wrapper to show a fallback while loading
+const withSuspense = (Component: React.FC) => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <Component />
+  </Suspense>
+);
 
 const routes: RouteObject[] = [
   {
     path: getReactRouterPath(IDENTIFIERS.HOME),
-    element: <MainLayout />, // Layout wraps all pages including "/"
+    element: <MainLayout />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: withSuspense(Home) },
       {
         path: getReactRouterPath(IDENTIFIERS.BLOG),
-        element: <BlogList />,
+        element: withSuspense(BlogList),
         loader: getBlogPosts,
       },
       {
         path: getReactRouterPath(IDENTIFIERS.BLOG_ADD),
-        element: <BlogAddNew />,
+        element: withSuspense(BlogAddNew),
       },
       {
         path: getReactRouterPath(IDENTIFIERS.BLOG_VIEW),
-        element: <BlogPost />,
+        element: withSuspense(BlogPost),
         loader: getBlogBySlug,
       },
       {
         path: getReactRouterPath(IDENTIFIERS.USERS),
-        element: <UserList />,
+        element: withSuspense(UserList),
         loader: getUsers,
       },
       {
         path: getReactRouterPath(IDENTIFIERS.USER_ADD),
-        element: <AddUser />,
+        element: withSuspense(AddUser),
       },
       {
         path: getReactRouterPath(IDENTIFIERS.USER_VIEW),
-        element: <UserPage />,
+        element: withSuspense(UserPage),
         loader: getUserById,
       },
-      { path: "/about", element: <About /> },
-      { path: "*", element: <NotFound /> },
+      { path: "/about", element: withSuspense(About) },
+      { path: "*", element: withSuspense(NotFound) },
     ],
   },
 ];

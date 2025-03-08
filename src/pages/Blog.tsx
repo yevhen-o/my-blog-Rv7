@@ -3,7 +3,7 @@ import { ListWrapper } from "@src/components/ListWrapper";
 import { useLoaderData } from "react-router";
 import { FirebasePostInterface } from "@src/types/PostInterface";
 
-export function BlogList() {
+export default function BlogList() {
   const blogsResponse = useLoaderData<FirebasePostInterface>();
 
   return (

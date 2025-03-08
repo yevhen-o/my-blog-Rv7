@@ -3,7 +3,7 @@ import { UserInterface } from "@src/types/UserInterface";
 import { getUrl, IDENTIFIERS, Link } from "@src/utils";
 import { useLoaderData } from "react-router";
 
-export function UserList() {
+export default function UserList() {
   const users = useLoaderData<UserInterface[]>();
   return (
     <>

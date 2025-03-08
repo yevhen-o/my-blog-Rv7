@@ -3,7 +3,7 @@ import { BackButtonHeading } from "@src/components/BackButtonHeading";
 import { AddEditPostForm } from "@src/features/Blog/AddEditPostForm";
 import { UserMenu } from "@src/features/authentication/UserMenu";
 
-export function BlogAddNew() {
+export default function BlogAddNew() {
   const { user } = useAuth();
 
   return (

@@ -4,7 +4,7 @@ import { getUrl, IDENTIFIERS } from "@src/utils";
 import { BackButtonHeading } from "@src/components/BackButtonHeading";
 import { postNewUser } from "@src/services/httpClient";
 
-export function AddUser() {
+export default function AddUser() {
   const navigate = useNavigate();
 
   const submitFunction = async () => {

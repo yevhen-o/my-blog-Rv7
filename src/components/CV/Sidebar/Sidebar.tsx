@@ -13,13 +13,12 @@ import {
 } from "@carbon/icons-react";
 import { BoardGames } from "../../Icons";
 import { Inliners } from "../../Icons/Inliners";
-import Image from "next/image";
 
 export const Sidebar = () => {
   return (
     <div className="page__side-bar">
       <div className="image_wrapper">
-        <Image
+        <img
           src="/yevhen_dev-icon2.jpg"
           alt="dev image"
           width={283}

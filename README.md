@@ -73,4 +73,4 @@ npm run build
 
 ## App Preview URL
 
-[https://my-blog-app-rust.vercel.app/](https://my-blog-app-rust.vercel.app/)
+[https://my-blog-rv7.vercel.app/](https://my-blog-rv7.vercel.app/)

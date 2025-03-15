@@ -5,7 +5,11 @@
   gap: var(--spacer-sm);
   background-color: var(--color-gray-25);
   margin-bottom: var(--spacer-default);
-
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;  
+  
   & > nav {
     display: flex;
     gap: var(--spacer-sm);
@@ -17,6 +21,8 @@
   & > nav a {
     padding: var(--spacer-sm) var(--spacer-gn);
     text-decoration: none;
+    display: flex;
+    align-items: center;
 
     &.active {
       background-color: var(--color-gray-50);
@@ -26,5 +32,9 @@
       background-color: var(--color-primary);
       color: var(--color-gray-0);
     }
+  }
+
+  a.logo {
+    padding: 10px;
   }
 }

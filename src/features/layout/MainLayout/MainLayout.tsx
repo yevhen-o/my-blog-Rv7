@@ -1,6 +1,9 @@
 import { Outlet } from "react-router";
-import { Navigation } from "../../components/Navigation";
-import "../../index.scss";
+
+import { Footer } from "../Footer";
+import { Navigation } from "../Navigation";
+import "../../../index.scss";
+import "./MainLayout.scss";
 
 export function MainLayout() {
   return (
@@ -9,6 +12,7 @@ export function MainLayout() {
       <div className="content__wrapper">
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 }

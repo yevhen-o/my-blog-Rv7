@@ -1,9 +1,9 @@
 import { BlogArticle } from "@src/features/Blog/BlogArticle";
-import { PostInterface } from "@src/types/PostInterface";
+import { FirebasePostInterface } from "@src/types/PostInterface";
 import { useLoaderData } from "react-router";
 
 export default function BlogPost() {
-  const blog = useLoaderData<PostInterface>();
+  const blog = useLoaderData<FirebasePostInterface>();
 
-  return <BlogArticle article={blog} />;
+  return <BlogArticle article={Object.values(blog)[0]} />;
 }

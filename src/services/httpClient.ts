@@ -1,8 +1,6 @@
 import { ZodSchema } from "zod";
 
 import {
-  PostInterface,
-  PostValidationSchema,
   FirebasePostsSchema,
   FirebasePostInterface,
 } from "../types/PostInterface";
@@ -65,9 +63,9 @@ export const getBlogPosts = async () => {
 
 export const getBlogBySlug = async ({ params }: LoaderFunctionArgs) => {
   const { slug } = params;
-  return await httpClient<PostInterface>(
-    `https://myblog-1c34a-default-rtdb.europe-west1.firebasedatabase.app/blogs/${slug}.json`,
-    PostValidationSchema
+  return await httpClient<FirebasePostInterface>(
+    `https://myblog-1c34a-default-rtdb.europe-west1.firebasedatabase.app/blogs.json?orderBy="slug"&equalTo="${slug}"`,
+    FirebasePostsSchema
   );
 };
 

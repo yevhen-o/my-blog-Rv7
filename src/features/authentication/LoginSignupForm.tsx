@@ -7,7 +7,7 @@ import { ControlledInputField } from "@src/components/Form/InputField";
 import { Button } from "@src/components/Button";
 import { useAuthStore } from "@src/store/authStore";
 
-export const authValidationSchema = z.object({
+const authValidationSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6).max(256),
 });

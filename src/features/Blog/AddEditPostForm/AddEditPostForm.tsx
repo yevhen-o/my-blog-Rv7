@@ -25,7 +25,6 @@ export const AddEditPostForm: React.FC = () => {
     title: "",
     content: "",
     tags: [],
-    imageUrl: "",
   };
 
   const submitFunction = async (
